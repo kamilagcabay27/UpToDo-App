@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:uptodo_app/category_screen/components/category_color_palette.dart';
+import 'package:uptodo_app/index_screen/home_screen.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -16,6 +17,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double screenHeight = size.height;
+    double screenWidth = size.width;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
@@ -34,7 +38,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(
-                    height: paddingValue,
+                    height: screenHeight * .01,
                   ),
                   Text(
                     'Create new category',
@@ -112,7 +116,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         ColorPalette(
                           hexColor: HexColor("#C9CC41"),
                         ),
-                        const SizedBox(
+                        SizedBox(
+                          /* width: screenWidth * 0.05, */
                           width: 12,
                         ),
                         ColorPalette(
@@ -169,6 +174,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           TextButton(
                             onPressed: () {
                               // Button'a tıklandığında yapılacak işlemler
+                              Navigator.of(context)
+                                  .pushReplacement(MaterialPageRoute(
+                                builder: (context) => HomeScreen(),
+                              ));
                             },
                             child: Text(
                               'Cancel',

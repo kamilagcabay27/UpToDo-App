@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:uptodo_app/model/task_model.dart';
+import 'package:uptodo_app/task_details/task_detail.dart';
 
 class UpToDoItem extends StatelessWidget {
   final UpToDo uptodo;
@@ -24,6 +25,13 @@ class UpToDoItem extends StatelessWidget {
         onTap: () {
           //print('Clicked on Todo Item');
           onUpToDoChanged(uptodo);
+        },
+        onLongPress: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => TaskDetail(),
+            ),
+          );
         },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
