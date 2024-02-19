@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -36,7 +37,8 @@ class CategoryItem extends StatelessWidget {
         ),
         Text(
           categoryName!,
-          style: TextStyle(color: Colors.white, fontSize: 16),
+          style: GoogleFonts.lato(
+              color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400),
         ),
       ],
     );

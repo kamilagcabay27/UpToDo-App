@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:uptodo_app/category_screen/category_screen.dart';
 import 'package:uptodo_app/components/bottom_sheet_text.dart';
@@ -80,12 +81,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       width: 117,
                     ),
-                    const Text(
+                    Text(
                       'Index',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'Lato'),
+                      style: GoogleFonts.lato(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
                     const SizedBox(
                       width: 100,
@@ -118,9 +119,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: const BorderRadius.all(Radius.circular(6)),
                       dropdownColor: Colors.grey,
                       icon: Image.asset("lib/assets/arrowDown.png"),
-                      hint: const Text(
+                      hint: Text(
                         'Today',
-                        style: TextStyle(color: Colors.white),
+                        style: GoogleFonts.lato(color: Colors.white),
                       ),
                       items: allDay
                           .map(
@@ -217,11 +218,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              const Padding(
+                              Padding(
                                 padding: EdgeInsets.only(right: 250, top: 25),
                                 child: Text(
                                   'Add Task',
-                                  style: TextStyle(
+                                  style: GoogleFonts.lato(
                                     fontSize: 20,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w700,
@@ -254,7 +255,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 right: 120),
                                             child: Text(
                                               'Task : ${taskController.text}',
-                                              style: const TextStyle(
+                                              style: GoogleFonts.lato(
                                                   color: Colors.white,
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400),
@@ -277,7 +278,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             height: 43,
                                             child: TextField(
                                               controller: taskController,
-                                              style: const TextStyle(
+                                              style: GoogleFonts.lato(
                                                   color: Colors.white),
                                               decoration: InputDecoration(
                                                 enabledBorder:
@@ -300,7 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     const EdgeInsets.only(
                                                         left: 15),
                                                 hintText: 'Task',
-                                                hintStyle: TextStyle(
+                                                hintStyle: GoogleFonts.lato(
                                                   color: Colors.grey[400],
                                                 ),
                                               ),
@@ -337,7 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 horizontal: 10),
                                             child: Text(
                                               'Description :  ${descriptionController.text}',
-                                              style: const TextStyle(
+                                              style: GoogleFonts.lato(
                                                   color: Colors.white,
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w400),
@@ -360,7 +361,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             height: 43,
                                             child: TextField(
                                               controller: descriptionController,
-                                              style: const TextStyle(
+                                              style: GoogleFonts.lato(
                                                   color: Colors.white),
                                               decoration: InputDecoration(
                                                 enabledBorder:
@@ -383,7 +384,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     const EdgeInsets.only(
                                                         left: 15),
                                                 hintText: 'Description',
-                                                hintStyle: TextStyle(
+                                                hintStyle: GoogleFonts.lato(
                                                   color: Colors.grey[400],
                                                 ),
                                               ),
@@ -471,9 +472,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 const SizedBox(
                                                   height: 20,
                                                 ),
-                                                const Text(
+                                                Text(
                                                   'Choose Category',
-                                                  style: TextStyle(
+                                                  style: GoogleFonts.lato(
                                                     color: Colors.white,
                                                     fontSize: 16,
                                                   ),
@@ -627,10 +628,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             ),
                                                             Text(
                                                               'Create New',
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize: 16),
+                                                              style: GoogleFonts
+                                                                  .lato(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          16),
                                                             ),
                                                           ],
                                                         ),
@@ -642,7 +645,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   onPressed: () {},
                                                   child: Text(
                                                     'Add Category',
-                                                    style: TextStyle(
+                                                    style: GoogleFonts.lato(
                                                       color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -693,9 +696,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 const SizedBox(
                                                   height: 20,
                                                 ),
-                                                const Text(
+                                                Text(
                                                   'Task Priority',
-                                                  style: TextStyle(
+                                                  style: GoogleFonts.lato(
                                                       color: Colors.white,
                                                       fontSize: 16),
                                                 ),
@@ -796,7 +799,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       153, 48)),
                                                       child: Text(
                                                         'Cancel',
-                                                        style: TextStyle(
+                                                        style: GoogleFonts.lato(
                                                           color: HexColor(
                                                             "#8687E7",
                                                           ),
@@ -819,9 +822,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   .circular(4),
                                                         ),
                                                       ),
-                                                      child: const Text(
+                                                      child: Text(
                                                         'Save',
-                                                        style: TextStyle(
+                                                        style: GoogleFonts.lato(
                                                           color: Colors.white,
                                                           fontSize: 16,
                                                         ),
@@ -906,11 +909,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         Image.asset('lib/assets/index.png'),
                         Text(
                           'Index',
-                          style: TextStyle(
-                              color:
-                                  currentTab == 0 ? Colors.white : Colors.black,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Lato'),
+                          style: GoogleFonts.lato(
+                            color:
+                                currentTab == 0 ? Colors.white : Colors.black,
+                            fontWeight: FontWeight.w400,
+                          ),
                         )
                       ],
                     ),
@@ -932,11 +935,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Text(
                           'Calendar',
-                          style: TextStyle(
-                              color:
-                                  currentTab == 1 ? Colors.white : Colors.white,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Lato'),
+                          style: GoogleFonts.lato(
+                            color:
+                                currentTab == 1 ? Colors.white : Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
                         )
                       ],
                     ),
@@ -961,11 +964,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Text(
                           'Focuse',
-                          style: TextStyle(
-                              color:
-                                  currentTab == 2 ? Colors.white : Colors.white,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Lato'),
+                          style: GoogleFonts.lato(
+                            color:
+                                currentTab == 2 ? Colors.white : Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
                         )
                       ],
                     ),
@@ -987,11 +990,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Text(
                           'Profile',
-                          style: TextStyle(
-                              color:
-                                  currentTab == 3 ? Colors.white : Colors.white,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Lato'),
+                          style: GoogleFonts.lato(
+                            color:
+                                currentTab == 3 ? Colors.white : Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
                         )
                       ],
                     ),
@@ -1061,19 +1064,23 @@ class CenterImage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Text(
+            Text(
               'What do you want to do today?',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.white, fontSize: 20, fontFamily: 'Lato'),
+              style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 20,
+              ),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
+            Text(
               'Tap + to add your tasks',
-              style: TextStyle(
-                  color: Colors.white70, fontSize: 16, fontFamily: 'Lato'),
+              style: GoogleFonts.lato(
+                color: Colors.white70,
+                fontSize: 16,
+              ),
             ),
           ],
         ),
