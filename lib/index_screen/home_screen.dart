@@ -414,17 +414,42 @@ class _HomeScreenState extends State<HomeScreen> {
                                         context: context,
                                         firstDate: DateTime(1800),
                                         lastDate: DateTime(3000),
-                                      ).then((value) {
-                                        if (value != null) {
-                                          print("clicked");
-                                        } else {
-                                          print("object");
-                                        }
-                                        return value;
-                                      });
+                                        builder: (BuildContext context,
+                                            Widget? child) {
+                                          return Column(
+                                            children: [
+                                              Text('Tarih Seç',
+                                                  style:
+                                                      TextStyle(fontSize: 18)),
+                                              child!,
+                                              ElevatedButton(
+                                                onPressed: () async {
+                                                  final TimeOfDay? timeOfDay =
+                                                      await showTimePicker(
+                                                    context: context,
+                                                    initialTime:
+                                                        TimeOfDay.now(),
+                                                  );
+
+                                                  if (timeOfDay != null) {
+                                                    // Burada seçilen saat ile istediğiniz işlemleri yapabilirsiniz.
+                                                    print(
+                                                        'Seçilen Saat: ${timeOfDay.format(context)}');
+                                                  }
+                                                },
+                                                child: Text('Saat Seç'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+
                                       if (dateTime != null) {
                                         setState(() {
                                           selectedDate = dateTime;
+                                          // Seçilen tarih ile istediğiniz işlemleri yapabilirsiniz.
+                                          print(
+                                              'Seçilen Tarih: ${selectedDate.toLocal()}');
                                         });
                                       }
                                     },
