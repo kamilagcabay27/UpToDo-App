@@ -1,106 +1,125 @@
-Padding(
-        padding: const EdgeInsets.only(top: 55, left: 15),
-        child: Stack(
-          children: [
-            IconButton(
-              onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => const IntroPage3(),
+bottomNavigationBar: BottomAppBar(
+        color: HexColor('#363636'),
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 10,
+        child: Container(
+          height: 60,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MaterialButton(
+                    minWidth: 40,
+                    onPressed: () {
+                      setState(() {
+                        currentScreen = const HomeScreen();
+                        currentTab = 0;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('lib/assets/index.png'),
+                        Text(
+                          'Index',
+                          style: GoogleFonts.lato(
+                            color:
+                                currentTab == 0 ? Colors.white : Colors.black,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                );
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: Colors.white,
-                size: 30,
+                  MaterialButton(
+                    minWidth: 40,
+                    onPressed: () {
+                      setState(() {
+                        currentScreen = const Calendar();
+                        currentTab = 1;
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => Calendar(),
+                        ));
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('lib/assets/calendar.png'),
+                        const SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          'Calendar',
+                          style: GoogleFonts.lato(
+                            color:
+                                currentTab == 1 ? Colors.white : Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 50,
+                  ),
+                  MaterialButton(
+                    minWidth: 40,
+                    onPressed: () {
+                      setState(() {
+                        currentScreen = const Focuse();
+                        currentTab = 2;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.access_time,
+                          color: currentTab == 2 ? Colors.white : Colors.white,
+                        ),
+                        Text(
+                          'Focuse',
+                          style: GoogleFonts.lato(
+                            color:
+                                currentTab == 2 ? Colors.white : Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  MaterialButton(
+                    minWidth: 40,
+                    onPressed: () {
+                      setState(() {
+                        currentScreen = const Profile();
+                        currentTab = 3;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('lib/assets/user.png'),
+                        const SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          'Profile',
+                          style: GoogleFonts.lato(
+                            color:
+                                currentTab == 3 ? Colors.white : Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 110),
-                  child: Center(
-                    child: Text(
-                      'Welcome to UpTodo',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontFamily: 'Lato',
-                          fontSize: 32),
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 320, top: 30),
-                  child: Text(
-                    'Please login to your account or create \n new account to continue',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white54,
-                      fontSize: 16,
-                      fontFamily: 'Lato',
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: HexColor('#8875FF'),
-                        fixedSize: const Size(327, 48),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4))),
-                    child: const Text(
-                      'LOGIN',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Lato',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 60),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterScreen(),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        side: BorderSide(
-                          color: HexColor('#8875FF'),
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fixedSize: const Size(327, 48)),
-                    child: const Text(
-                      'CREATE ACCOUNT',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontFamily: 'Lato',
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
+            ],
+          ),
         ),
       ),

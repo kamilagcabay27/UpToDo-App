@@ -31,12 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
   ValueNotifier<bool> isSecondTextFieldVisible = ValueNotifier<bool>(false);
   ValueNotifier<bool> isAddTextVisible = ValueNotifier<bool>(true);
   ValueNotifier<bool> isDescriptionTextVisible = ValueNotifier<bool>(true);
-  final List<Widget> screens = [
-    const HomeScreen(),
-    const Calendar(),
-    const Focuse(),
-    const Profile(),
-  ];
+  final List<Widget> screens = [];
+  int currentIndex = 0;
   String? choosenDay;
   List<String> allDay = [
     'Today',
@@ -58,116 +54,125 @@ class _HomeScreenState extends State<HomeScreen> {
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = const HomeScreen();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Stack(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 40),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Image.asset('lib/assets/sortIcon.png'),
-                    ),
-                    const SizedBox(
-                      width: 117,
-                    ),
-                    Text(
-                      'Index',
-                      style: GoogleFonts.lato(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 100,
-                    ),
-                    IconButton(
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white,
+        backgroundColor: HexColor('#363636'),
+        onTap: (index) {
+          currentIndex = index;
+          setState(() {});
+        },
+        currentIndex: currentIndex,
+        items: [
+          BottomNavigationBarItem(
+              icon: Image.asset('lib/assets/index.png'), label: "Index"),
+          BottomNavigationBarItem(
+              icon: Image.asset('lib/assets/calendar.png'), label: "Calendar"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.access_time), label: 'Focuse'),
+          BottomNavigationBarItem(
+              icon: Image.asset('lib/assets/user.png'), label: 'Profile'),
+        ],
+      ),
+      body: [
+        Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
                         onPressed: () {},
-                        icon: Image.asset('lib/assets/profile.png'))
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: SearchBox(
-                      controller: searchController,
-                      hintText: 'Search for your task...',
-                      obscureText: false,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 26),
-                    child: DropdownButton(
-                      borderRadius: const BorderRadius.all(Radius.circular(6)),
-                      dropdownColor: Colors.grey,
-                      icon: Image.asset("lib/assets/arrowDown.png"),
-                      hint: Text(
-                        'Today',
-                        style: GoogleFonts.lato(color: Colors.white),
+                        icon: Image.asset('lib/assets/sortIcon.png'),
                       ),
-                      items: allDay
-                          .map(
-                            (String day) => DropdownMenuItem(
-                              value: day,
-                              child: Text(day),
-                            ),
-                          )
-                          .toList(),
-                      value: choosenDay,
-                      onChanged: (String? value) {
-                        setState(() {
-                          print("Working : $value");
-                          choosenDay = value!;
-                        });
+                      const SizedBox(
+                        width: 117,
+                      ),
+                      Text(
+                        'Index',
+                        style: GoogleFonts.lato(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 100,
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Image.asset('lib/assets/profile.png'))
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: SearchBox(
+                        controller: searchController,
+                        hintText: 'Search for your task...',
+                        obscureText: false,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 26),
+                      child: DropdownButton(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(6)),
+                        dropdownColor: Colors.grey,
+                        icon: Image.asset("lib/assets/arrowDown.png"),
+                        hint: Text(
+                          'Today',
+                          style: GoogleFonts.lato(color: Colors.white),
+                        ),
+                        items: allDay
+                            .map(
+                              (String day) => DropdownMenuItem(
+                                value: day,
+                                child: Text(day),
+                              ),
+                            )
+                            .toList(),
+                        value: choosenDay,
+                        onChanged: (String? value) {
+                          setState(() {
+                            print("Working : $value");
+                            choosenDay = value!;
+                          });
+                        },
+                      ),
+                    ),
+                    ListView.builder(
+                      physics: AlwaysScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: _foundUpToDo.length,
+                      itemBuilder: (context, index) {
+                        UpToDo todoo = _foundUpToDo[index];
+                        return UpToDoItem(
+                            uptodo: todoo,
+                            onUpToDoChanged: _handleToDoChange,
+                            clock:
+                                "Today At ${selectedTime.hour}:${selectedTime.minute}");
                       },
                     ),
-                  ),
-                  /* ListView(
-                    // physics: ClampingScrollPhysics(),
-                    physics: AlwaysScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    children: [
-                      for (UpToDo todoo in _foundUpToDo)
-                        UpToDoItem(
-                          uptodo: todoo,
-                          onUpToDoChanged: _handleToDoChange,
-                        ),
-                    ],
-                  ), */
-                  ListView.builder(
-                    physics: AlwaysScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: _foundUpToDo.length,
-                    itemBuilder: (context, index) {
-                      UpToDo todoo = _foundUpToDo[index];
-                      return UpToDoItem(
-                          uptodo: todoo,
-                          onUpToDoChanged: _handleToDoChange,
-                          clock:
-                              "Today At ${selectedTime.hour}:${selectedTime.minute}");
-                    },
-                  ),
-                ],
-              ),
-              /* Text(
+                  ],
+                ),
+                /* Text(
                 "${selectedDate.day} / ${selectedDate.month} / ${selectedDate.year}",
                 style: const TextStyle(
                     color: Colors.white70, fontSize: 16, fontFamily: 'Lato'),
@@ -180,15 +185,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: const TextStyle(
                     color: Colors.white70, fontSize: 16, fontFamily: 'Lato'),
               ) */
-            ],
-          ),
-          // CenterImage(),
-          /* PageStorage(
-            child: currentScreen,
-            bucket: bucket,
-          ), */
-        ],
-      ),
+              ],
+            ),
+          ],
+        ),
+        Calendar(),
+        Focuse(),
+        Profile(),
+      ].elementAt(currentIndex),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
@@ -908,128 +912,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        color: HexColor('#363636'),
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
-        child: Container(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = const HomeScreen();
-                        currentTab = 0;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('lib/assets/index.png'),
-                        Text(
-                          'Index',
-                          style: GoogleFonts.lato(
-                            color:
-                                currentTab == 0 ? Colors.white : Colors.black,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = const Calendar();
-                        currentTab = 1;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('lib/assets/calendar.png'),
-                        const SizedBox(
-                          height: 3,
-                        ),
-                        Text(
-                          'Calendar',
-                          style: GoogleFonts.lato(
-                            color:
-                                currentTab == 1 ? Colors.white : Colors.white,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = const Focuse();
-                        currentTab = 2;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.access_time,
-                          color: currentTab == 2 ? Colors.white : Colors.white,
-                        ),
-                        Text(
-                          'Focuse',
-                          style: GoogleFonts.lato(
-                            color:
-                                currentTab == 2 ? Colors.white : Colors.white,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = const Profile();
-                        currentTab = 3;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('lib/assets/user.png'),
-                        const SizedBox(
-                          height: 3,
-                        ),
-                        Text(
-                          'Profile',
-                          style: GoogleFonts.lato(
-                            color:
-                                currentTab == 3 ? Colors.white : Colors.white,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 
@@ -1051,15 +933,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     searchController.clear();
   }
-
-  /* void _showDatePicker() {
-    showDatePicker(
-      context: context,
-      firstDate: DateTime(1800),
-      lastDate: DateTime(3000),
-      initialDate: DateTime.now(),
-    );
-  } */
 }
 
 // ignore: must_be_immutable
