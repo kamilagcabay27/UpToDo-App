@@ -29,7 +29,7 @@ class UpToDoItem extends StatelessWidget {
         onLongPress: () {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (context) => TaskDetail(),
+              builder: (context) => const TaskDetail(),
             ),
           );
         },
@@ -77,7 +77,7 @@ class UpToDoItem extends StatelessWidget {
                         width: 13,
                         height: 13,
                         child: Image.asset("lib/assets/kep.png")),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     const Text(
@@ -111,7 +111,7 @@ class UpToDoItem extends StatelessWidget {
                   ),
                   backgroundColor: HexColor("#809CFF")),
             ), */
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
             /* TextButton.icon(
@@ -148,12 +148,12 @@ class UpToDoItem extends StatelessWidget {
                         width: 14,
                         height: 14,
                         child: Image.asset("lib/assets/flag.png")),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Text(
                       '${uptodo.id}',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
+                      style: const TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ],
                 ),

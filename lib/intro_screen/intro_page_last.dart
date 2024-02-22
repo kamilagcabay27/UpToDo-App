@@ -51,7 +51,7 @@ class _IntroLastPageState extends State<IntroLastPage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 320, top: 30),
+                    padding: const EdgeInsets.only(bottom: 320, top: 30),
                     child: Text(
                       'Please login to your account or create \n new account to continue',
                       textAlign: TextAlign.center,
@@ -73,7 +73,7 @@ class _IntroLastPageState extends State<IntroLastPage> {
                           onPressed: () {
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
+                                builder: (context) => const LoginScreen(),
                               ),
                             );
                           },

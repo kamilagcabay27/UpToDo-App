@@ -31,7 +31,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: IconButton(
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => LoginScreen(),
+                      builder: (context) => const LoginScreen(),
                     ));
                   },
                   icon: const Icon(
@@ -41,7 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 200, top: 10),
+                padding: const EdgeInsets.only(right: 200, top: 10),
                 child: Text(
                   'Register',
                   style: GoogleFonts.lato(
@@ -55,7 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 20,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 250, bottom: 10),
+                padding: const EdgeInsets.only(right: 250, bottom: 10),
                 child: Text(
                   'Username',
                   textAlign: TextAlign.start,
@@ -75,7 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 20,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 250, bottom: 10),
+                padding: const EdgeInsets.only(right: 250, bottom: 10),
                 child: Text(
                   'Password',
                   style: GoogleFonts.lato(
@@ -94,7 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 20,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 190, bottom: 10),
+                padding: const EdgeInsets.only(right: 190, bottom: 10),
                 child: Text(
                   'Confirm Password',
                   style: GoogleFonts.lato(
@@ -214,7 +214,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
+                    builder: (context) => const LoginScreen(),
                   ));
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),

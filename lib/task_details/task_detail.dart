@@ -54,20 +54,20 @@ class _TaskDetailState extends State<TaskDetail> {
             onPressed: () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => HomeScreen(),
+                  builder: (context) => const HomeScreen(),
                 ),
               );
             },
-            icon: Icon(Icons.close_rounded)),
+            icon: const Icon(Icons.close_rounded)),
       ),
       body: Column(
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           TaskComponent(
             title: Text(
-              '${taskController.text}',
+              taskController.text,
               style: GoogleFonts.lato(
                   color: Colors.white,
                   fontSize: 20,
@@ -130,7 +130,7 @@ class _TaskDetailState extends State<TaskDetail> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 13,
                               ),
                               Column(
@@ -300,7 +300,7 @@ class _TaskDetailState extends State<TaskDetail> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 25,
                               ),
                               Row(
@@ -352,14 +352,14 @@ class _TaskDetailState extends State<TaskDetail> {
                 },
                 child: Image.asset("lib/assets/taskEdit.png")),
             subtitle: Text(
-              '${descriptionController.text}',
+              descriptionController.text,
               style: GoogleFonts.lato(
                   color: Colors.grey,
                   fontSize: 16,
                   fontWeight: FontWeight.w400),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           TaskPropertyComponents(
@@ -402,7 +402,7 @@ class _TaskDetailState extends State<TaskDetail> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           TaskPropertyComponents(
@@ -455,7 +455,7 @@ class _TaskDetailState extends State<TaskDetail> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 15),
+                          const SizedBox(height: 15),
                           Expanded(
                             child: GridView.count(
                               crossAxisCount: 3,
@@ -545,7 +545,8 @@ class _TaskDetailState extends State<TaskDetail> {
                                   onTap: () {
                                     Navigator.of(context)
                                         .pushReplacement(MaterialPageRoute(
-                                      builder: (context) => CategoryScreen(),
+                                      builder: (context) =>
+                                          const CategoryScreen(),
                                     ));
                                   },
                                   child: Column(
@@ -589,6 +590,13 @@ class _TaskDetailState extends State<TaskDetail> {
                           ),
                           TextButton(
                             onPressed: () {},
+                            style: TextButton.styleFrom(
+                              fixedSize: const Size(289, 48),
+                              backgroundColor: HexColor("#8687E7"),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                            ),
                             child: Text(
                               'Add Category',
                               style: GoogleFonts.lato(
@@ -597,15 +605,8 @@ class _TaskDetailState extends State<TaskDetail> {
                                 fontSize: 16,
                               ),
                             ),
-                            style: TextButton.styleFrom(
-                              fixedSize: Size(289, 48),
-                              backgroundColor: HexColor("#8687E7"),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                            ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 12,
                           )
                         ],
@@ -626,7 +627,7 @@ class _TaskDetailState extends State<TaskDetail> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset("lib/assets/taskKep.png"),
-                      SizedBox(
+                      const SizedBox(
                         width: 7,
                       ),
                       Text(
@@ -640,7 +641,7 @@ class _TaskDetailState extends State<TaskDetail> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           TaskPropertyComponents(
@@ -702,52 +703,52 @@ class _TaskDetailState extends State<TaskDetail> {
                             child: GridView.count(
                               crossAxisCount: 4,
                               children: <Widget>[
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 1,
                                 ),
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 2,
                                 ),
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 3,
                                 ),
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 4,
                                 ),
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 5,
                                 ),
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 6,
                                 ),
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 7,
                                 ),
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 8,
                                 ),
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 9,
                                 ),
-                                Items(
+                                const Items(
                                   width: 64,
                                   height: 64,
                                   number: 10,
@@ -821,7 +822,7 @@ class _TaskDetailState extends State<TaskDetail> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           TaskPropertyComponents(
@@ -849,7 +850,7 @@ class _TaskDetailState extends State<TaskDetail> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           GestureDetector(
@@ -858,12 +859,13 @@ class _TaskDetailState extends State<TaskDetail> {
                 context: context,
                 builder: (context) {
                   return Card(
-                    margin: EdgeInsets.symmetric(vertical: 298, horizontal: 20),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 298, horizontal: 20),
                     color: HexColor("#363636"),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Text(
@@ -892,7 +894,7 @@ class _TaskDetailState extends State<TaskDetail> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
@@ -904,7 +906,7 @@ class _TaskDetailState extends State<TaskDetail> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Row(
@@ -927,7 +929,7 @@ class _TaskDetailState extends State<TaskDetail> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 30,
                             ),
                             TextButton(

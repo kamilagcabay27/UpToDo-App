@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       final authenticated = await auth.authenticate(
           localizedReason: 'Authentication with fingerprint or Face ID',
-          options: AuthenticationOptions(
+          options: const AuthenticationOptions(
             stickyAuth: true,
             biometricOnly: true,
           ));
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => HomeScreen(),
+              builder: (context) => const HomeScreen(),
             ));
       }
     } on PlatformException catch (e) {
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 240, top: 10),
+                padding: const EdgeInsets.only(right: 240, top: 10),
                 child: Text(
                   'Login',
                   style: GoogleFonts.lato(
@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 40,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 250, bottom: 10),
+                padding: const EdgeInsets.only(right: 250, bottom: 10),
                 child: Text(
                   'Username',
                   textAlign: TextAlign.start,
@@ -159,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 20,
               ),
               Padding(
-                padding: EdgeInsets.only(right: 250, bottom: 10),
+                padding: const EdgeInsets.only(right: 250, bottom: 10),
                 child: Text(
                   'Password',
                   style: GoogleFonts.lato(

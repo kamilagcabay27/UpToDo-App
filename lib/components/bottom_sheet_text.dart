@@ -5,7 +5,7 @@ class BottomSheetTextField extends StatelessWidget {
   final controller;
   final String hintText;
   final bool obscureText;
-  FocusNode _focusNode = FocusNode();
+  final FocusNode _focusNode = FocusNode();
 
   BottomSheetTextField({
     super.key,

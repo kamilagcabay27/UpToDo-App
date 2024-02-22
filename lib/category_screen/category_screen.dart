@@ -116,7 +116,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         ColorPalette(
                           hexColor: HexColor("#C9CC41"),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           /* width: screenWidth * 0.05, */
                           width: 12,
                         ),
@@ -176,20 +176,20 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               // Button'a tıklandığında yapılacak işlemler
                               Navigator.of(context)
                                   .pushReplacement(MaterialPageRoute(
-                                builder: (context) => HomeScreen(),
+                                builder: (context) => const HomeScreen(),
                               ));
                             },
+                            style: TextButton.styleFrom(
+                              fixedSize: const Size(154, 48),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4)),
+                            ),
                             child: Text(
                               'Cancel',
                               style: GoogleFonts.lato(
                                   color: HexColor("#8687E7"),
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400),
-                            ),
-                            style: TextButton.styleFrom(
-                              fixedSize: Size(154, 48),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4)),
                             ),
                           ),
                           SizedBox(
@@ -199,6 +199,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                             onPressed: () {
                               // Button'a tıklandığında yapılacak işlemler
                             },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: HexColor("#8687E7"),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              fixedSize: const Size(153, 48),
+                            ),
                             child: Text(
                               'Create Category',
                               style: GoogleFonts.lato(
@@ -206,13 +213,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.w400,
                               ),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: HexColor("#8687E7"),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              fixedSize: Size(153, 48),
                             ),
                           ),
                         ],

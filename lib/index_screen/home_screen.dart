@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:uptodo_app/category_screen/category_screen.dart';
-import 'package:uptodo_app/components/bottom_sheet_text.dart';
 import 'package:uptodo_app/components/category_item.dart';
 import 'package:uptodo_app/components/items.dart';
-import 'package:uptodo_app/components/my_text_field.dart';
 import 'package:uptodo_app/components/search_box.dart';
 import 'package:uptodo_app/index_screen/page/calendar.dart';
 import 'package:uptodo_app/index_screen/page/focuse.dart';
@@ -73,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Image.asset('lib/assets/index.png'), label: "Index"),
           BottomNavigationBarItem(
               icon: Image.asset('lib/assets/calendar.png'), label: "Calendar"),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.access_time), label: 'Focuse'),
           BottomNavigationBarItem(
               icon: Image.asset('lib/assets/user.png'), label: 'Profile'),
@@ -158,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     ListView.builder(
-                      physics: AlwaysScrollableScrollPhysics(),
+                      physics: const AlwaysScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: _foundUpToDo.length,
                       itemBuilder: (context, index) {
@@ -189,9 +187,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        Calendar(),
-        Focuse(),
-        Profile(),
+        const Calendar(),
+        const Focuse(),
+        const Profile(),
       ].elementAt(currentIndex),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -223,7 +221,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(right: 250, top: 25),
+                                padding:
+                                    const EdgeInsets.only(right: 250, top: 25),
                                 child: Text(
                                   'Add Task',
                                   style: GoogleFonts.lato(
@@ -422,7 +421,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Widget? child) {
                                           return Column(
                                             children: [
-                                              Text('Tarih Seç',
+                                              const Text('Tarih Seç',
                                                   style:
                                                       TextStyle(fontSize: 18)),
                                               child!,
@@ -441,7 +440,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         'Seçilen Saat: ${timeOfDay.format(context)}');
                                                   }
                                                 },
-                                                child: Text('Saat Seç'),
+                                                child: const Text('Saat Seç'),
                                               ),
                                             ],
                                           );
@@ -462,7 +461,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   const SizedBox(
                                     width: 10,
                                   ),
-                                  IconButton(
+                                  /* IconButton(
                                     onPressed: () async {
                                       TimeOfDay? timeOfDay =
                                           await showTimePicker(
@@ -481,7 +480,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   const SizedBox(
                                     width: 10,
-                                  ),
+                                  ), */
                                   IconButton(
                                     onPressed: () {
                                       showDialog(
@@ -523,7 +522,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     ),
                                                   ],
                                                 ),
-                                                SizedBox(height: 15),
+                                                const SizedBox(height: 15),
                                                 Expanded(
                                                   child: GridView.count(
                                                     crossAxisCount: 3,
@@ -617,7 +616,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               .pushReplacement(
                                                                   MaterialPageRoute(
                                                             builder: (context) =>
-                                                                CategoryScreen(),
+                                                                const CategoryScreen(),
                                                           ));
                                                         },
                                                         child: Column(
@@ -672,17 +671,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 TextButton(
                                                   onPressed: () {},
-                                                  child: Text(
-                                                    'Add Category',
-                                                    style: GoogleFonts.lato(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      fontSize: 16,
-                                                    ),
-                                                  ),
                                                   style: TextButton.styleFrom(
-                                                    fixedSize: Size(289, 48),
+                                                    fixedSize:
+                                                        const Size(289, 48),
                                                     backgroundColor:
                                                         HexColor("#8687E7"),
                                                     shape:
@@ -692,8 +683,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               4),
                                                     ),
                                                   ),
+                                                  child: Text(
+                                                    'Add Category',
+                                                    style: GoogleFonts.lato(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 12,
                                                 )
                                               ],
@@ -758,7 +758,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 Expanded(
                                                   child: GridView.count(
                                                     crossAxisCount: 4,
-                                                    children: <Widget>[
+                                                    children: const <Widget>[
                                                       Items(
                                                         width: 64,
                                                         height: 64,

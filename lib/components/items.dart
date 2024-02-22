@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class Items extends StatefulWidget {
-  Items(
+  const Items(
       {super.key,
       required this.width,
       required this.height,
@@ -47,9 +47,9 @@ class _ItemsState extends State<Items> {
                 ),
                 Text(
                   '${widget.number}',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 )
               ],

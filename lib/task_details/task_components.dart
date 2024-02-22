@@ -25,7 +25,7 @@ class TaskComponent extends StatelessWidget {
         leading: firstIcon,
         title: title,
         trailing: secondIcon /* Image.asset("lib/assets/taskEdit.png") */,
-        contentPadding: EdgeInsets.symmetric(horizontal: 9),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 9),
         subtitle: subtitle,
       ),
     );

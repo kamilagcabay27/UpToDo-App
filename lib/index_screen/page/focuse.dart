@@ -12,9 +12,11 @@ class _FocuseState extends State<Focuse> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Focuse'),
+        title: const Text('Focuse'),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text('Focuse Screen', style: TextStyle(fontSize: 40)),
       ),
     );

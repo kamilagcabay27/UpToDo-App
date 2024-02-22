@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
@@ -11,12 +12,19 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Calendar'),
-      ),
-      body: Center(
-        child: Text('Calendar Screen', style: TextStyle(fontSize: 40)),
-      ),
-    );
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: Text(
+            'Calendar',
+            style: GoogleFonts.lato(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
+          ),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+        ),
+        body: const Column(
+          children: <Widget>[],
+        ));
   }
 }
